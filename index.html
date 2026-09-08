@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Só Filhotes — filhotes selecionados, acompanhamento responsável e atendimento próximo." />
+  <meta name="theme-color" content="#3b231b" />
+  <title>Só Filhotes — Encontre seu novo companheiro</title>
+  <link rel="icon" type="image/png" href="assets/logo-so-filhotes.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header" id="topo">
+    <div class="container nav-wrap">
+      <a class="brand" href="#topo" aria-label="Só Filhotes">
+        <img class="brand-logo" src="assets/logo-so-filhotes.png" alt="" />
+        <span><strong>Só</strong> Filhotes<small>Os melhores filhotes sempre</small></span>
+      </a>
+      <nav class="desktop-nav" aria-label="Navegação principal">
+        <a href="#filhotes">Filhotes</a>
+        <a href="#diferenciais">Diferenciais</a>
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#contato">Contato</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="ghost-btn" id="adminOpenBtn">Painel administrativo</button>
+        <a class="primary-btn compact" href="#filhotes">Ver disponíveis</a>
+      </div>
+      <button class="menu-btn" id="menuBtn" aria-label="Abrir menu">☰</button>
+    </div>
+    <div class="mobile-nav" id="mobileNav">
+      <a href="#filhotes">Filhotes</a><a href="#diferenciais">Diferenciais</a><a href="#como-funciona">Como funciona</a><a href="#contato">Contato</a>
+      <button class="ghost-btn full" id="adminOpenMobile">Painel administrativo</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow"><span></span> Filhotes selecionados com carinho</div>
+          <h1>Seu novo melhor amigo está <em>esperando por você.</em></h1>
+          <p>Conheça nossos filhotes, veja informações completas e converse diretamente com a equipe da Só Filhotes antes de escolher.</p>
+          <div class="hero-actions">
+            <a class="primary-btn" href="#filhotes">Conhecer os filhotes <span>→</span></a>
+            <button class="text-btn" data-whatsapp-general>Falar com a equipe ↗</button>
+          </div>
+          <div class="trust-row">
+            <div><strong>+8 anos</strong><span>de experiência</span></div>
+            <div><strong>100%</strong><span>acompanhados</span></div>
+            <div><strong>Suporte</strong><span>antes e depois</span></div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=1100&q=85" alt="Golden Retriever" />
+            <div class="floating-card top-card"><span class="status-dot"></span><div><b>Novos filhotes</b><small>Atualizado hoje</small></div></div>
+            <div class="floating-card bottom-card"><div class="mini-avatar">♥</div><div><b>Acompanhamento próximo</b><small>Do primeiro contato ao novo lar</small></div></div>
+          </div>
+          <div class="hero-shape"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="breed-strip" aria-label="Principais benefícios">
+      <div class="container benefit-row">
+        <div class="benefit"><span>✓</span><div><b>Carteira de vacinação</b><small>Informações organizadas</small></div></div>
+        <div class="benefit"><span>♡</span><div><b>Bem-estar em primeiro lugar</b><small>Rotina de cuidado e socialização</small></div></div>
+        <div class="benefit"><span>⌂</span><div><b>Escolha consciente</b><small>Orientação para cada família</small></div></div>
+        <div class="benefit"><span>↗</span><div><b>Atendimento direto</b><small>Converse pelo WhatsApp</small></div></div>
+      </div>
+    </section>
+
+    <section class="catalog-section" id="filhotes">
+      <div class="container">
+        <div class="section-heading row-heading">
+          <div>
+            <div class="eyebrow dark"><span></span> Disponíveis agora</div>
+            <h2>Conheça nossos filhotes</h2>
+            <p>Use os filtros para encontrar um perfil que combine com a sua família.</p>
+          </div>
+          <div class="availability-pill"><span class="status-dot"></span><b id="availableCountPublic">0</b> disponíveis</div>
+        </div>
+
+        <div class="catalog-toolbar">
+          <label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="Buscar por nome ou raça..." /></label>
+          <div class="filter-group" id="breedFilters"></div>
+          <select id="sexFilter" class="select-control" aria-label="Filtrar por sexo"><option value="Todos">Todos os sexos</option><option value="Macho">Machos</option><option value="Fêmea">Fêmeas</option></select>
+        </div>
+
+        <div class="dog-grid" id="dogGrid"></div>
+        <div class="empty-state hidden" id="emptyState"><div>🐾</div><h3>Nenhum filhote encontrado</h3><p>Tente alterar os filtros da busca.</p></div>
+      </div>
+    </section>
+
+    <section class="why-section" id="diferenciais">
+      <div class="container why-grid">
+        <div class="why-media">
+          <img src="https://images.unsplash.com/photo-1507146426996-ef05306b995a?auto=format&fit=crop&w=1000&q=85" alt="Cachorro recebendo carinho" />
+          <div class="why-badge"><b>Bem-estar</b><span>do início ao novo lar</span></div>
+        </div>
+        <div class="why-copy">
+          <div class="eyebrow dark"><span></span> Por que escolher a gente</div>
+          <h2>Mais do que um filhote: o começo de uma nova história.</h2>
+          <p>Nosso processo é pensado para que a escolha seja segura para a família e saudável para o animal.</p>
+          <div class="feature-list">
+            <article><span>01</span><div><h3>Informações transparentes</h3><p>Você vê idade, sexo, raça, status, características e cuidados antes do contato.</p></div></article>
+            <article><span>02</span><div><h3>Atendimento individual</h3><p>Entendemos sua rotina para orientar sobre perfil, adaptação e primeiros cuidados.</p></div></article>
+            <article><span>03</span><div><h3>Escolha com responsabilidade</h3><p>Todo interesse passa por atendimento humano antes dos próximos passos.</p></div></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="process-section" id="como-funciona">
+      <div class="container">
+        <div class="section-heading centered"><div class="eyebrow dark center"><span></span> Processo simples</div><h2>Como funciona</h2><p>Do primeiro clique à conversa com nossa equipe.</p></div>
+        <div class="process-grid">
+          <article><div class="process-icon">⌕</div><span>01</span><h3>Explore o catálogo</h3><p>Veja os filhotes disponíveis e filtre pelo perfil que procura.</p></article>
+          <article><div class="process-icon">♡</div><span>02</span><h3>Escolha um perfil</h3><p>Abra os detalhes para conhecer melhor o animal.</p></article>
+          <article><div class="process-icon">◌</div><span>03</span><h3>Fale com a equipe</h3><p>O WhatsApp já abre com o nome do filhote escolhido.</p></article>
+          <article><div class="process-icon">⌂</div><span>04</span><h3>Próximos passos</h3><p>Nossa equipe orienta o processo e a adaptação ao novo lar.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contato">
+      <div class="container contact-card">
+        <div><span class="soft-label">Atendimento personalizado</span><h2>Ainda não sabe qual filhote combina com você?</h2><p>Conte um pouco sobre sua rotina e ajudamos a encontrar a melhor opção.</p></div>
+        <button class="light-btn" data-whatsapp-general>Conversar no WhatsApp <span>↗</span></button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div><a class="brand footer-brand" href="#topo"><img class="brand-logo" src="assets/logo-so-filhotes.png" alt="" /><span><strong>Só</strong> Filhotes<small>Os melhores filhotes sempre</small></span></a><p>Carinho, cuidado e acompanhamento para encontrar o novo membro da família.</p></div>
+      <div><b>Navegação</b><a href="#filhotes">Filhotes disponíveis</a><a href="#diferenciais">Diferenciais</a><a href="#como-funciona">Como funciona</a></div>
+      <div><b>Atendimento</b><a href="javascript:void(0)" data-whatsapp-general>WhatsApp</a><span>Seg–Sáb · 8h às 18h</span><span>Brasil</span></div>
+    </div>
+    <div class="container footer-bottom"><span>© 2026 Só Filhotes. Todos os direitos reservados.</span><button id="adminFooterBtn">Acesso administrativo</button></div>
+  </footer>
+
+  <!-- Modal detalhes -->
+  <div class="modal-backdrop" id="detailModal" aria-hidden="true">
+    <div class="modal detail-modal">
+      <button class="modal-close" data-close="detailModal">×</button>
+      <div id="detailContent"></div>
+    </div>
+  </div>
+
+  <!-- ======================================================= -->
+  <!-- PAINEL ADMINISTRATIVO (ADMIN SHELL)                     -->
+  <!-- ======================================================= -->
+  <div class="admin-shell" id="adminShell" aria-hidden="true">
+    
+    <!-- 1. BARRA LATERAL (MENU) -->
+    <aside class="admin-sidebar">
+      <!-- Marca / Logo -->
+      <div class="admin-brand">
+        <img class="admin-brand-logo" src="assets/logo-so-filhotes.png" alt="Só Filhotes Logo" />
+        <div>
+          <b>Só Filhotes</b>
+          <small>Administração</small>
+        </div>
+      </div>
+      
+      <!-- Navegação das Telas -->
+      <nav>
+        <button class="admin-nav active" data-admin-view="dashboard">
+          <span>⌂</span> Visão geral
+        </button>
+        <button class="admin-nav" data-admin-view="inventory">
+          <span>□</span> Filhotes / Estoque
+        </button>
+        <button class="admin-nav" data-admin-view="inquiries">
+          <span>✉</span> Interessados
+        </button>
+      </nav>
+      
+      <!-- Rodapé do Menu (Usuário e Botão Voltar) -->
+      <div class="admin-side-bottom">
+        <div class="admin-user">
+          <div class="avatar">LG</div>
+          <div>
+            <b>Administrador</b>
+            <small>Acesso local</small>
+          </div>
+        </div>
+        <button class="logout-btn" id="adminCloseBtn">← Voltar ao site</button>
+      </div>
+    </aside>
+
+    <!-- 2. ÁREA DE CONTEÚDO PRINCIPAL -->
+    <section class="admin-main">
+      
+      <!-- Cabeçalho (Breadcrumb, Título e Botão de Novo Filhote) -->
+      <header class="admin-topbar">
+        <div>
+          <small id="adminBreadcrumb">Painel / Visão geral</small>
+          <h1 id="adminTitle">Visão geral</h1>
+        </div>
+        <div class="admin-top-actions">
+          <span class="live-pill"><i></i> Dados salvos neste navegador</span>
+          <button class="primary-btn compact" id="newDogBtn">+ Novo filhote</button>
+        </div>
+      </header>
+
+      <!-- ========================================= -->
+      <!-- TELA A: VISÃO GERAL (DASHBOARD)           -->
+      <!-- ========================================= -->
+      <div class="admin-view active" id="view-dashboard">
+        <div class="admin-stats" id="adminStats"></div>
+        
+        <div class="admin-two-col">
+          <!-- Gráfico/Barras de Estoque -->
+          <section class="admin-card">
+            <div class="card-head">
+              <div>
+                <h3>Resumo do estoque</h3>
+                <p>Distribuição atual por status</p>
+              </div>
+            </div>
+            <div class="stock-bars" id="stockBars"></div>
+          </section>
+          
+          <!-- Lista de Atividades -->
+          <section class="admin-card">
+            <div class="card-head">
+              <div>
+                <h3>Atividade recente</h3>
+                <p>Últimas alterações desta demonstração</p>
+              </div>
+            </div>
+            <div class="activity-list" id="activityList"></div>
+          </section>
+        </div>
+        
+        <!-- Tabela Resumida -->
+        <section class="admin-card">
+          <div class="card-head">
+            <div>
+              <h3>Filhotes cadastrados</h3>
+              <p>Visão rápida dos registros</p>
+            </div>
+            <button class="link-button" data-go-inventory>Ver estoque completo →</button>
+          </div>
+          <div class="mini-table" id="dashboardTable"></div>
+        </section>
+      </div>
+
+      <!-- ========================================= -->
+      <!-- TELA B: ESTOQUE (INVENTORY)               -->
+      <!-- ========================================= -->
+      <div class="admin-view" id="view-inventory">
+        <section class="admin-card flush">
+          <!-- Filtros e Busca -->
+          <div class="inventory-toolbar">
+            <label class="search-box admin-search">
+              <span>⌕</span>
+              <input id="adminSearch" type="search" placeholder="Buscar no estoque..." />
+            </label>
+            
+            <select id="adminStatusFilter" class="select-control">
+              <option value="Todos">Todos os status</option>
+              <option>Disponível</option>
+              <option>Reservado</option>
+              <option>Vendido</option>
+            </select>
+            
+            <button class="secondary-btn" id="resetDemoBtn">Restaurar demonstração</button>
+          </div>
+          
+          <!-- Tabela de Filhotes -->
+          <div class="inventory-table-wrap">
+            <table class="inventory-table">
+              <thead>
+                <tr>
+                  <th>Animal</th>
+                  <th>Raça</th>
+                  <th>Sexo / idade</th>
+                  <th>Preço</th>
+                  <th>Status</th>
+                  <th>Ações</th> <!-- Adicionei um cabeçalho vazio/Ações para alinhar a coluna de botões (editar/excluir) -->
+                </tr>
+              </thead>
+              <tbody id="inventoryBody"></tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+
+      <!-- ========================================= -->
+      <!-- TELA C: INTERESSADOS (INQUIRIES)          -->
+      <!-- ========================================= -->
+      <div class="admin-view" id="view-inquiries">
+        <section class="admin-card">
+          <div class="card-head">
+            <div>
+              <h3>Interessados</h3>
+              <p>Exemplo de contatos recebidos pelo catálogo.</p>
+            </div>
+          </div>
+          <div class="inquiry-list" id="inquiryList"></div>
+        </section>
+      </div>
+
+    </section>
+  </div>
+
+  <!-- ======================================================= -->
+  <!-- MODAL: FORMULÁRIO DE CADASTRO/EDIÇÃO DE FILHOTES        -->
+  <!-- ======================================================= -->
+  <div class="modal-backdrop" id="dogFormModal" aria-hidden="true">
+    <div class="modal form-modal">
+      <button class="modal-close" data-close="dogFormModal" aria-label="Fechar modal">×</button>
+      
+      <div class="form-header">
+        <span class="soft-label">Painel administrativo</span>
+        <h2 id="formTitle">Cadastrar filhote</h2>
+        <p>Os dados ficam salvos neste navegador.</p>
+      </div>
+      
+      <form id="dogForm">
+        <input type="hidden" id="dogId" />
+        
+        <div class="form-grid">
+          <label>
+            <span>Nome</span>
+            <input id="dogName" required placeholder="Ex.: Thor" />
+          </label>
+          <label>
+            <span>Raça</span>
+            <input id="dogBreed" required placeholder="Ex.: Golden Retriever" />
+          </label>
+          <label>
+            <span>Sexo</span>
+            <select id="dogSex" required>
+              <option>Macho</option>
+              <option>Fêmea</option>
+            </select>
+          </label>
+          <label>
+            <span>Idade</span>
+            <input id="dogAge" required placeholder="Ex.: 6 meses" />
+          </label>
+          <label>
+            <span>Preço</span>
+            <input id="dogPrice" required placeholder="Ex.: R$ 3.500" />
+          </label>
+          <label>
+            <span>Status</span>
+            <select id="dogStatus">
+              <option>Disponível</option>
+              <option>Reservado</option>
+              <option>Vendido</option>
+            </select>
+          </label>
+          <label class="span-2">
+            <span>URL da foto</span>
+            <!-- Mudei para type="url" para validação nativa do navegador -->
+            <input type="url" id="dogImage" placeholder="https://..." />
+          </label>
+          <label class="span-2">
+            <span>Descrição</span>
+            <textarea id="dogDesc" rows="3" placeholder="Temperamento e principais características..."></textarea>
+          </label>
+          <label>
+            <span>Pelagem</span>
+            <input id="dogCoat" placeholder="Ex.: Dourada" />
+          </label>
+          <label>
+            <span>Porte</span>
+            <select id="dogSize">
+              <option>Pequeno</option>
+              <option selected>Médio</option>
+              <option>Grande</option>
+            </select>
+          </label>
+        </div>
+        
+        <div class="form-actions">
+          <button type="button" class="secondary-btn" data-close="dogFormModal">Cancelar</button>
+          <button class="primary-btn" type="submit">Salvar filhote</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ======================================================= -->
+  <!-- FEEDBACK (TOAST / ALERTA DE SUCESSO)                    -->
+  <!-- ======================================================= -->
+  <div class="toast" id="toast">
+    <span>✓</span>
+    <div>
+      <b id="toastTitle">Salvo</b>
+      <small id="toastText">Alterações concluídas.</small>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="app.js"></script>
+</body>
+</html>
